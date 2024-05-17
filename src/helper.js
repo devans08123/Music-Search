@@ -1,7 +1,14 @@
-const fetchSearch = (searchTerm, path) => {
-    return fetch(`http://localhost:3000/${path}/${searchTerm}`)
-    .then(response => response.json())
-    .then(resData => resData.results)
+const API_URL = `https://itunes.apple.com/search?term=`
+const fetchSearch = async (searchTerm) => {
+    const response = await fetch(API_URL + searchTerm)
+    const resData = await response.json()
+    return resData.results
+}
+
+const fetchSearch = async  (searchTerm) => {
+    const responce = await fetch (API_URL + searchTerm)
+    const resData = await response.json ()
+    return resData.results
 }
 
 const wrapPromise = (promise) => {
@@ -26,8 +33,8 @@ const wrapPromise = (promise) => {
     }
 }
 
-export const createResource = (searchTerm, path) => {
+export const createResource = (searchTerm) => {
     return {
-        result: wrapPromise(fetchSearch(searchTerm, path))
+        result: wrapPromise(fetchSearch(searchTerm))
     }
 }

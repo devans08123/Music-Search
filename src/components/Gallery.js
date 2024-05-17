@@ -3,9 +3,10 @@ import { DataContext } from '../context/DataContext'
 import GalleryItem from './GalleryItem'
 
 const Gallery = () => {
-    const data = useContext(DataContext)
-    const myData = data.result.read()
-
+    
+    // const data = useContext(DataContext)
+    // const myData = data.result.read()
+    const data = props.data.results. read()
     const display = myData.map((item, index) => {
         return (
             <GalleryItem item={item} key={index} />
